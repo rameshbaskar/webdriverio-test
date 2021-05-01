@@ -1,16 +1,13 @@
-const BasePage = require('./basePage');
+const Page = require('./basePage');
 
-class HomePage extends BasePage {
-  constructor() {
-    super();
-    this.tbSearch = "input[name='q']";
-  }
+// Elements
+const tbSearch = `input[name='q']`;
 
-  search(text) {
-    console.log(`Searching for text ${text}`);
-    super.setText(this.tbSearch, text);
-    super.pressKey('Enter');
-  }
+function search(text) {
+  $(tbSearch).setValue(text);
+  Page.pressKey('Enter');
 }
 
-module.exports = HomePage;
+module.exports = {
+  search
+}
